@@ -15,19 +15,23 @@ public class HW2 {
         
 		int nDeck=Integer.parseInt(testn);
 		Deck deck=new Deck(nDeck);
+		
 		//TODO: please check your output, make sure that you print all cards on your screen (10 points)
 		deck.printDeck();
 		
-		if(isAllCardsCorrect(deck.getAllCards(),nDeck)){
+		if(isAllCardsCorrect(deck.getAllCards(),nDeck))
+		{
 			System.out.println("Well done!");
-		}else{
+		}
+		else
+		{
 			System.out.println("Error, please check your sourse code");
 		}
 	}
 	/**
 	 * This method is used for checking your result, not a part of your HW2
-	 * @param allCards 所有的牌
-	 * @param nDeck 總共有幾副牌
+	 * @param allCards �������
+	 * @param nDeck 蝮賢��嗾����
 	 * @return
 	 */
 	private static boolean isAllCardsCorrect(ArrayList<Card> allCards,int nDeck){
@@ -71,6 +75,17 @@ class Deck{
 	//TODO: Please implement the constructor (30 points)
 	public Deck(int nDeck){
 		cards=new ArrayList<Card>();
+		for(int i=0;i<nDeck;i++)
+		{
+			for(int sign=1;sign<=4;sign++) //花色
+			{
+				for(int num=1;num<=13;num++) //A~K
+				{
+					Card card=new Card(sign,num);
+					cards.add(card);	
+				}
+			}
+		}
 		//1 Deck have 52 cards, https://en.wikipedia.org/wiki/Poker
 		//Hint: Use new Card(x,y) and 3 for loops to add card into deck
 		//Sample code start
@@ -81,6 +96,15 @@ class Deck{
 	}	
 	//TODO: Please implement the method to print all cards on screen (10 points)
 	public void printDeck(){
+		
+		for(int deck=0;deck<cards.size();deck++)
+		{
+			Card c1=cards.get(deck);
+			c1.printCard();
+			
+		}
+		
+		
 		//Hint: print all items in ArrayList<Card> cards, 
 		//TODO: please implement and reuse printCard method in Card class (5 points)
 
@@ -105,6 +129,8 @@ class Card{
 	}	
 	//TODO: 1. Please implement the printCard method (20 points, 10 for suit, 10 for rank)
 	public void printCard(){
+		
+		System.out.println(getSuit()+","+getRank());
 		//Hint: print (System.out.println) card as suit,rank, for example: print 1,1 as Clubs Ace
 
 	}
